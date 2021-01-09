@@ -2,6 +2,7 @@ package com.example.testapp.Activity;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.example.testapp.Broadcast.AlarmBroadcast;
 import com.example.testapp.Database.Databaseclass;
 import com.example.testapp.R;
+import com.example.testapp.Viewmodel.AlarmViewModel;
 import com.example.testapp.model.EntityClass;
 
 import java.text.DateFormat;
@@ -36,6 +38,9 @@ public class CreateAlarmActivity extends AppCompatActivity {
     ImageView btn_back,btn_submit;
     String timetonotify;
     Databaseclass databaseclass;
+    public static final String TIMEADED="Alarm Added";
+    public static final String DATEADED="Date Added";
+    public static final String MESSAGEADED="Message Added";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
 
         Initilization();
         databaseclass=Databaseclass.getDatabase(getApplicationContext());
+
 
        //btn click listner methods
         btnclicklistner();
@@ -139,9 +145,11 @@ public class CreateAlarmActivity extends AppCompatActivity {
         String time=tv_time.getText().toString().trim();
         String date=tv_date.getText().toString().trim();
         String message=tv_message.getText().toString().trim();
+        Intent resultintent=new Intent();
 
         if (time.isEmpty()){
             ShowMessage("Plese fill time");
+
         }
         else if (date.isEmpty()){
             ShowMessage("Plese fill date");
@@ -151,15 +159,19 @@ public class CreateAlarmActivity extends AppCompatActivity {
         }
         else {
 
-            EntityClass entityClass=new EntityClass();
-            entityClass.setTime(time);
-            entityClass.setDate(date);
-            entityClass.setMessage(message);
-            databaseclass.eventDao().insertall(entityClass);
-            setAlarm(message,date,time);
-
-
+//            EntityClass entityClass=new EntityClass();
+//            entityClass.setTime(time);
+//            entityClass.setDate(date);
+//            entityClass.setMessage(message);
+//            databaseclass.eventDao().insertall(entityClass);
+//            setAlarm(message,date,time);
+            resultintent.putExtra(TIMEADED,time);
+            resultintent.putExtra(DATEADED,date);
+            resultintent.putExtra(MESSAGEADED,message);
+            setResult(RESULT_OK,resultintent);
+            finish();
         }
+
 
     }
 
