@@ -11,7 +11,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
+        android:padding="15dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/primaryTextColor"
-            android:text="@string/app_name" />
+            android:text="@string/edit_alarm" />
 
         <ImageView
             android:id="@+id/btn_submit"

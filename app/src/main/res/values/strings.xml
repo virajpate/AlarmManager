@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">TestApp</string>
+    <string name="app_name">Alarm Manager</string>
+    <string name="snozz_off">Snozz off</string>
+    <string name="message">Message</string>
+    <string name="_12_jun_2014_12_12_12">12 jun 2014 12:12:12</string>
+    <string name="creat_alarm">Creat Alarm</string>
+    <string name="type_message_here">Type Message here</string>
+    <string name="edit_alarm">Edit Alarm</string>
+    <string name="_10_12_15">10:12:15</string>
+    <string name="select_time">Select Time</string>
+    <string name="_12_jan_2020">12 jan 2020</string>
+    <string name="select_date">Select Date</string>
 </resources>

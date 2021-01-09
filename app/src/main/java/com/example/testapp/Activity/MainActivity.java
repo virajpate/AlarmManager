@@ -7,18 +7,26 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.testapp.Adapter.AlarmAdapter;
+import com.example.testapp.Broadcast.AlarmBroadcast;
 import com.example.testapp.Database.Databaseclass;
 import com.example.testapp.R;
 import com.example.testapp.Viewmodel.AlarmViewModel;
 import com.example.testapp.model.EntityClass;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements AlarmAdapter.OnDe
     private AlarmViewModel viewModel;
     AlarmAdapter adapter;
     private List<EntityClass> entityClassList;
+
 
 
 
@@ -93,6 +102,13 @@ public class MainActivity extends AppCompatActivity implements AlarmAdapter.OnDe
 
             viewModel.insert(entityClass);
 
+            String message=data.getStringExtra(CreateAlarmActivity.MESSAGEADED);
+            String date=data.getStringExtra(CreateAlarmActivity.DATEADED);
+            String time=data.getStringExtra(CreateAlarmActivity.TIMEADED);
+
+
+
+
             ShowMessage("Save");
         }
         else if(requestCode == Update_Alarm_REQ_CODE && resultCode ==RESULT_OK){
@@ -119,4 +135,7 @@ public class MainActivity extends AppCompatActivity implements AlarmAdapter.OnDe
     public void OnDeleteClickListener(EntityClass entityClass) {
         viewModel.delet(entityClass);
     }
+
+
+
 }

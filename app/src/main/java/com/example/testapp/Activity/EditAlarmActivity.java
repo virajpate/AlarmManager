@@ -80,6 +80,14 @@ public class EditAlarmActivity extends AppCompatActivity {
 
     private void btnmethod() {
 
+        //btn bac
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         //btn time
         btn_time.setOnClickListener(new View.OnClickListener() {
             @Override

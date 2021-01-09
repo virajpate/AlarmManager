@@ -164,11 +164,12 @@ public class CreateAlarmActivity extends AppCompatActivity {
 //            entityClass.setDate(date);
 //            entityClass.setMessage(message);
 //            databaseclass.eventDao().insertall(entityClass);
-//            setAlarm(message,date,time);
+
             resultintent.putExtra(TIMEADED,time);
             resultintent.putExtra(DATEADED,date);
             resultintent.putExtra(MESSAGEADED,message);
             setResult(RESULT_OK,resultintent);
+            setAlarm(message,date,time);
             finish();
         }
 
