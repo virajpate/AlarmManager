@@ -11,6 +11,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -41,6 +42,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
     public static final String TIMEADED="Alarm Added";
     public static final String DATEADED="Date Added";
     public static final String MESSAGEADED="Message Added";
+    private static final String TAG = "CreateAlarmActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,14 +228,18 @@ public class CreateAlarmActivity extends AppCompatActivity {
 
         Intent intent=new Intent(getApplicationContext(), AlarmBroadcast.class);
         intent.putExtra("event",text);
+        Log.i(TAG,text);
         intent.putExtra("time",time);
+        Log.i(TAG,time);
         intent.putExtra("date",date);
+        Log.i(TAG,date);
         PendingIntent pendingIntent=PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_ONE_SHOT);
 
         String datetime= date+ " "+timetonotify;
         DateFormat format=new SimpleDateFormat("d-M-yyyy hh:mm");
         try {
             Date date1=format.parse(datetime);
+            Log.i(TAG, String.valueOf(date1));
             alarmManager.set(AlarmManager.RTC_WAKEUP,date1.getTime(),pendingIntent);
         } catch (ParseException e) {
             e.printStackTrace();

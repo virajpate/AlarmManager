@@ -28,10 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:text="@string/edit_alarm"
             android:textColor="@color/primaryTextColor"
-            android:text="@string/edit_alarm" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/btn_submit"
@@ -39,6 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:onClick="update"
+            android:background="@drawable/circle_back"
+            android:padding="03dp"
             app:srcCompat="@drawable/ic_submit" />
 
     </RelativeLayout>
@@ -64,7 +67,6 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:hint="10:12:15"
             android:textColor="@color/primaryTextColor"
             android:textColorHint="@color/primaryTextColor"
             android:textSize="18sp" />
@@ -90,7 +92,6 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="12 jan 2020"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp" />
 
@@ -115,9 +116,10 @@
             android:layout_marginEnd="15dp"
             android:gravity="center"
             android:lines="4"
+            android:textColorHint="#B6ACAC"
             android:background="@drawable/bgmessage"
             android:textColor="@color/primaryTextColor"
-            android:text="Type Message here" />
+            android:hint="Type Message here" />
 
 
     </RelativeLayout>

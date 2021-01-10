@@ -35,13 +35,13 @@ public class AlarmBroadcast extends BroadcastReceiver {
         NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(context,"notify_001");
 
         RemoteViews contentview=new RemoteViews(context.getPackageName(), R.layout.activity_notification_message);
-       // contentview.setImageViewResource(R.id.image,R.mipmap.ic_launcher_round);
+        //contentview.setImageViewResource(R.id.image,R.drawable.ic_add);
         PendingIntent pendingSwitchIntent=PendingIntent.getBroadcast(context,0,intent,0);
         contentview.setOnClickPendingIntent(R.id.flashBtn,pendingSwitchIntent);
         contentview.setTextViewText(R.id.messages,text);
         contentview.setTextViewText(R.id.date,date);
 
-       // mBuilder.setSmallIcon(R.mipmap.ic_launcher);
+       // mBuilder.setSmallIcon(R.drawable.ic_add);
         mBuilder.setAutoCancel(false);
         mBuilder.setOngoing(true);
         mBuilder.setPriority(Notification.PRIORITY_HIGH);

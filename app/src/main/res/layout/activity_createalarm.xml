@@ -11,7 +11,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:padding="12dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +29,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:text="@string/creat_alarm"
             android:textColor="@color/primaryTextColor"
-            android:text="@string/creat_alarm" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/btn_submit"
@@ -40,6 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             app:srcCompat="@drawable/ic_submit"
+            android:background="@drawable/circle_back"
+            android:padding="04dp"
             android:contentDescription="@string/app_name"/>
 
     </RelativeLayout>
@@ -65,7 +68,6 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:hint="@string/_10_12_15"
             android:textColor="@color/primaryTextColor"
             android:textColorHint="@color/primaryTextColor"
             android:textSize="18sp" />
@@ -91,7 +93,6 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="@string/_12_jan_2020"
             android:textColor="@color/primaryTextColor"
             android:textSize="18sp" />
 
@@ -116,7 +117,7 @@
             android:layout_marginEnd="15dp"
             android:gravity="center"
             android:lines="4"
-
+             android:textColorHint="#B6ACAC"
             android:background="@drawable/bgmessage"
             android:textColor="@color/primaryTextColor"
             android:hint="@string/type_message_here"

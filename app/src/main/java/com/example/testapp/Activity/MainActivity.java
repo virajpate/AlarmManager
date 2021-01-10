@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements AlarmAdapter.OnDe
 
 
 
-            ShowMessage("Save");
+            ShowMessage("Alarm Set Successfully..");
         }
         else if(requestCode == Update_Alarm_REQ_CODE && resultCode ==RESULT_OK){
 
@@ -119,11 +119,11 @@ public class MainActivity extends AppCompatActivity implements AlarmAdapter.OnDe
                                                            data.getStringExtra(EditAlarmActivity.UPDATE_time));
                   viewModel.update(entityClass);
 
-                  ShowMessage("Alarm Updated..");
+                  ShowMessage("Alarm Updated Successfully..");
 
         }
         else {
-            ShowMessage("Not Save");
+            ShowMessage("Alarm Not Save..");
         }
     }
 
