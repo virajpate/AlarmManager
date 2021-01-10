@@ -31,18 +31,17 @@ public class AlarmBroadcast extends BroadcastReceiver {
 
         //Notification Builder
         PendingIntent pendingIntent=PendingIntent.getActivity(context,1,intent1,PendingIntent.FLAG_ONE_SHOT);
-
         NotificationManager notificationManager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(context,"notify_001");
 
         RemoteViews contentview=new RemoteViews(context.getPackageName(), R.layout.activity_notification_message);
-        contentview.setImageViewResource(R.id.image,R.mipmap.ic_launcher);
+       // contentview.setImageViewResource(R.id.image,R.mipmap.ic_launcher_round);
         PendingIntent pendingSwitchIntent=PendingIntent.getBroadcast(context,0,intent,0);
         contentview.setOnClickPendingIntent(R.id.flashBtn,pendingSwitchIntent);
         contentview.setTextViewText(R.id.messages,text);
         contentview.setTextViewText(R.id.date,date);
 
-        mBuilder.setSmallIcon(R.drawable.ic_alarm_add_black_24dp);
+       // mBuilder.setSmallIcon(R.mipmap.ic_launcher);
         mBuilder.setAutoCancel(false);
         mBuilder.setOngoing(true);
         mBuilder.setPriority(Notification.PRIORITY_HIGH);
@@ -52,8 +51,8 @@ public class AlarmBroadcast extends BroadcastReceiver {
         mBuilder.setContentIntent(pendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            String channelId="channel_id";
-            NotificationChannel channel=new NotificationChannel(channelId,"channel name",NotificationManager.IMPORTANCE_HIGH);
+            String channelId = "channel_id";
+            NotificationChannel channel = new NotificationChannel(channelId, "channel name", NotificationManager.IMPORTANCE_HIGH);
             channel.enableVibration(true);
             notificationManager.createNotificationChannel(channel);
             mBuilder.setChannelId(channelId);

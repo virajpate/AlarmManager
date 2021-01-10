@@ -51,7 +51,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
         databaseclass=Databaseclass.getDatabase(getApplicationContext());
 
 
-       //btn click listner methods
+        //btn click listner methods
         btnclicklistner();
 
 
@@ -73,7 +73,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               onBackPressed();
+                onBackPressed();
             }
         });
 
@@ -90,7 +90,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
         btn_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              selectTimeMethod();
+                selectTimeMethod();
             }
         });
 
@@ -98,7 +98,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
         btn_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               selectDateMethod();
+                selectDateMethod();
             }
         });
     }
@@ -114,7 +114,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 timetonotify= hourOfDay + ":"+minute;
-                tv_time.setText(timetonotify);
+                tv_time.setText(FormatTime(hourOfDay,minute));
                 //todo: format time
             }
         },hour,minute,false);
@@ -170,7 +170,7 @@ public class CreateAlarmActivity extends AppCompatActivity {
             resultintent.putExtra(MESSAGEADED,message);
             setResult(RESULT_OK,resultintent);
             setAlarm(message,date,time);
-            finish();
+
         }
 
 
@@ -179,6 +179,34 @@ public class CreateAlarmActivity extends AppCompatActivity {
 
     private void ShowMessage(String s) {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+    }
+
+    public String FormatTime(int hour, int minute) {
+
+        String time;
+        time = "";
+        String formattedMinute;
+
+        if (minute / 10 == 0) {
+            formattedMinute = "0" + minute;
+        } else {
+            formattedMinute = "" + minute;
+        }
+
+
+        if (hour == 0) {
+            time = "12" + ":" + formattedMinute + " AM";
+        } else if (hour < 12) {
+            time = hour + ":" + formattedMinute + " AM";
+        } else if (hour == 12) {
+            time = "12" + ":" + formattedMinute + " PM";
+        } else {
+            int temp = hour - 12;
+            time = temp + ":" + formattedMinute + " PM";
+        }
+
+
+        return time;
     }
 
 
