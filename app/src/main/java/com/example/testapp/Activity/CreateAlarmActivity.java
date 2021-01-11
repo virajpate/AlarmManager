@@ -21,6 +21,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.testapp.Broadcast.AlarmBroadcast;
+import com.example.testapp.Broadcast.AlertReceiver;
+import com.example.testapp.Broadcast.NotificationHelper;
 import com.example.testapp.Database.Databaseclass;
 import com.example.testapp.R;
 import com.example.testapp.Viewmodel.AlarmViewModel;
@@ -226,14 +228,21 @@ public class CreateAlarmActivity extends AppCompatActivity {
     private void setAlarm(String text,String date,String time){
         AlarmManager alarmManager=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
-        Intent intent=new Intent(getApplicationContext(), AlarmBroadcast.class);
+        Intent intent=new Intent(getApplicationContext(), AlertReceiver.class);
+        Intent intent1=new Intent(getApplicationContext(), NotificationHelper.class);
+
+
         intent.putExtra("event",text);
+        intent1.putExtra("event",text);
         Log.i(TAG,text);
         intent.putExtra("time",time);
+        intent1.putExtra("time",time);
         Log.i(TAG,time);
         intent.putExtra("date",date);
+        intent1.putExtra("date",date);
         Log.i(TAG,date);
-        PendingIntent pendingIntent=PendingIntent.getBroadcast(getApplicationContext(),0,intent,PendingIntent.FLAG_ONE_SHOT);
+
+        PendingIntent pendingIntent=PendingIntent.getBroadcast(getApplicationContext(),1,intent,0);
 
         String datetime= date+ " "+timetonotify;
         DateFormat format=new SimpleDateFormat("d-M-yyyy hh:mm");

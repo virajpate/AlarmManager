@@ -41,7 +41,7 @@ public class AlarmBroadcast extends BroadcastReceiver {
         contentview.setTextViewText(R.id.messages,text);
         contentview.setTextViewText(R.id.date,date);
 
-       // mBuilder.setSmallIcon(R.drawable.ic_add);
+       // mBuilder.setSmallIcon(R.drawable.ic_alarm_add_black_24dp);
         mBuilder.setAutoCancel(false);
         mBuilder.setOngoing(true);
         mBuilder.setPriority(Notification.PRIORITY_HIGH);
@@ -59,7 +59,7 @@ public class AlarmBroadcast extends BroadcastReceiver {
         }
 
         Notification notification =mBuilder.build();
-        notificationManager.notify(1,notification);
+        notificationManager.notify(0,notification);
     }
 
 }
